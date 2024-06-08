@@ -130,12 +130,33 @@ function Home() {
                                     </div>
                                     <div className="font-bold">
                                         <span>Country Name: {data?.name?.official}</span><br></br>
+                                        <span>Native Name:
+                                            {data?.name?.nativeName &&
+                                                Object.values(data?.name?.nativeName).map((name,index) => {
+                                                return <span className="pl-1" key={index}>{name.official}, </span>;
+                                            })}
+                                        </span><br></br>
+                                        <span>Currencies:
+                                            {data?.currencies &&
+                                                Object.values(data?.currencies).map((currency,index) => {
+                                                return <span className="pl-1" key={index}>{currency.name} {currency.symbol}, </span>;
+                                            })}
+                                        </span><br></br>
                                         <span>Country Code: {data?.idd?.suffixes}</span><br></br>
                                         <span>CCA2: {data?.cca2} , CCA3: {data?.cca3} , CCN3: {data?.ccn3} , CIOC: {data?.cioc}</span><br></br>
                                         <span>Alternative: {data?.altSpellings?.['1']}</span><br></br>
                                         <span>Area: {data?.area}</span><br></br>
                                         <span>Capital: {data?.capital} (LatLng: {data?.capitalInfo?.latlng?.['0']},{data?.capitalInfo?.latlng?.['1']})</span><br></br>
+                                        <span>Translations:
+                                            {data?.translations &&
+                                                Object.values(data?.translations).map((trans,index) => {
+                                                return <span className="pl-1" key={index}>{trans.official}, </span>;
+                                            })}
+                                        </span><br></br>
                                         <span>Continent: {data?.continents}</span><br></br>
+                                        <span>Population: {data?.population}</span><br></br>
+                                        <span>Status: {data?.status}</span><br></br>
+                                        <span>Timezone: {data?.timezones}</span><br></br>
                                         <span>Maps: {data?.maps?.googleMaps}</span><br></br>
                                         <span>Borders: {data?.borders?.['0']},{data?.borders?.['1']},{data?.borders?.['2']},{data?.borders?.['3']}</span><br></br>
                                     </div>
@@ -143,8 +164,13 @@ function Home() {
                             </Modal>
                             <p className="text-xs text-gray-700 text-base text-start px-2">CCA2: {item.cca2}</p>
                             <p className="text-xs text-gray-700 text-base text-start px-2">CCA3: {item.cca3}</p>
-                            <p className="text-xs text-gray-700 text-base text-start px-2">Native Name:{item?.name?.nativeName?.prs?.official}</p>
-                            {/* <p className="text-xs text-gray-700 text-base text-start px-2">Native Name:{console.log(item?.name?.nativeName?.prs?.official,'nt')}</p> */}
+                            <p className="text-xs text-gray-700 text-base text-start px-2">
+                                Native Name:
+                                {item?.name?.nativeName &&
+                                    Object.values(item?.name?.nativeName).map((name,index) => {
+                                    return <span className="pl-1" key={index}>{name.official}, </span>;
+                                })}
+                            </p>
                             <p className="text-xs text-gray-700 text-base text-start px-2">Alternative: {item.altSpellings['1']}</p>
                             <p className="text-xs text-gray-700 text-base text-start px-2">Code: {item.idd['suffixes']}</p>
                         </div>
@@ -165,13 +191,34 @@ function Home() {
                                         <img src={data?.flags?.png}  alt= {`${data?.name?.official} flags`}  className="details-flag"/> 
                                     </div>
                                     <div className="font-bold">
-                                        <span>Country Name: {data?.name?.official}</span><br></br>
+                                    <span>Country Name: {data?.name?.official}</span><br></br>
+                                        <span>Native Name:
+                                            {data?.name?.nativeName &&
+                                                Object.values(data?.name?.nativeName).map((name,index) => {
+                                                return <span className="pl-1" key={index}>{name.official}, </span>;
+                                            })}
+                                        </span><br></br>
+                                        <span>Currencies:
+                                            {data?.currencies &&
+                                                Object.values(data?.currencies).map((currency,index) => {
+                                                return <span className="pl-1" key={index}>{currency.name} {currency.symbol}, </span>;
+                                            })}
+                                        </span><br></br>
                                         <span>Country Code: {data?.idd?.suffixes}</span><br></br>
                                         <span>CCA2: {data?.cca2} , CCA3: {data?.cca3} , CCN3: {data?.ccn3} , CIOC: {data?.cioc}</span><br></br>
                                         <span>Alternative: {data?.altSpellings?.['1']}</span><br></br>
                                         <span>Area: {data?.area}</span><br></br>
                                         <span>Capital: {data?.capital} (LatLng: {data?.capitalInfo?.latlng?.['0']},{data?.capitalInfo?.latlng?.['1']})</span><br></br>
+                                        <span>Translations:
+                                            {data?.translations &&
+                                                Object.values(data?.translations).map((trans,index) => {
+                                                return <span className="pl-1" key={index}>{trans.official}, </span>;
+                                            })}
+                                        </span><br></br>
                                         <span>Continent: {data?.continents}</span><br></br>
+                                        <span>Population: {data?.population}</span><br></br>
+                                        <span>Status: {data?.status}</span><br></br>
+                                        <span>Timezone: {data?.timezones}</span><br></br>
                                         <span>Maps: {data?.maps?.googleMaps}</span><br></br>
                                         <span>Borders: {data?.borders?.['0']},{data?.borders?.['1']},{data?.borders?.['2']},{data?.borders?.['3']}</span><br></br>
                                     </div>
@@ -179,8 +226,13 @@ function Home() {
                             </Modal>
                             <p className="text-xs text-gray-700 text-base text-start px-2">CCA2: {item.cca2}</p>
                             <p className="text-xs text-gray-700 text-base text-start px-2">CCA3: {item.cca3}</p>
-                            <p className="text-xs text-gray-700 text-base text-start px-2">Native Name:{item?.name?.nativeName?.prs?.official}</p>
-                            {/* <p className="text-xs text-gray-700 text-base text-start px-2">Native Name:{console.log(item?.name?.nativeName?.prs?.official,'nt')}</p> */}
+                            <p className="text-xs text-gray-700 text-base text-start px-2">
+                                Native Name:
+                                {item?.name?.nativeName &&
+                                    Object.values(item?.name?.nativeName).map((name,index) => {
+                                    return <span className="pl-1" key={index}>{name.official}, </span>;
+                                })}
+                            </p>
                             <p className="text-xs text-gray-700 text-base text-start px-2">Alternative: {item.altSpellings['1']}</p>
                             <p className="text-xs text-gray-700 text-base text-start px-2">Code: {item.idd['suffixes']}</p>
                         </div>
