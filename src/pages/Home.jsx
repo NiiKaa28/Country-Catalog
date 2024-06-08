@@ -130,6 +130,7 @@ function Home() {
                                     </div>
                                     <div className="font-bold">
                                         <span>Country Name: {data?.name?.official}</span><br></br>
+                                        <span>Country Code: {data?.idd?.suffixes}</span><br></br>
                                         <span>CCA2: {data?.cca2} , CCA3: {data?.cca3} , CCN3: {data?.ccn3} , CIOC: {data?.cioc}</span><br></br>
                                         <span>Alternative: {data?.altSpellings?.['1']}</span><br></br>
                                         <span>Area: {data?.area}</span><br></br>
@@ -154,12 +155,32 @@ function Home() {
                     <div className="max-w-xs mb-5 rounded overflow-hidden shadow-lg country-img" key={index}>
                         <img src={item.flags['png']}  alt= {`${item.name['official']} flags`}  className="w-full"/> 
                         <div className="p-2">
-                            <div className="font-bold text-start text-md mb-2 px-2">
+                            <div className="font-bold text-start text-md mb-2 px-2" style={{ cursor: 'pointer' }} onClick={() => handleData(item)}>
                                 {item.name['official']}
                             </div>
+                            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Example Modal" ariaHideApp={false}>
+                                <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onClick={closeModal}>Close</button>
+                                <div className="container grid grid-cols-2 mt-5">
+                                    <div className="col-span-1">
+                                        <img src={data?.flags?.png}  alt= {`${data?.name?.official} flags`}  className="details-flag"/> 
+                                    </div>
+                                    <div className="font-bold">
+                                        <span>Country Name: {data?.name?.official}</span><br></br>
+                                        <span>Country Code: {data?.idd?.suffixes}</span><br></br>
+                                        <span>CCA2: {data?.cca2} , CCA3: {data?.cca3} , CCN3: {data?.ccn3} , CIOC: {data?.cioc}</span><br></br>
+                                        <span>Alternative: {data?.altSpellings?.['1']}</span><br></br>
+                                        <span>Area: {data?.area}</span><br></br>
+                                        <span>Capital: {data?.capital} (LatLng: {data?.capitalInfo?.latlng?.['0']},{data?.capitalInfo?.latlng?.['1']})</span><br></br>
+                                        <span>Continent: {data?.continents}</span><br></br>
+                                        <span>Maps: {data?.maps?.googleMaps}</span><br></br>
+                                        <span>Borders: {data?.borders?.['0']},{data?.borders?.['1']},{data?.borders?.['2']},{data?.borders?.['3']}</span><br></br>
+                                    </div>
+                                </div>
+                            </Modal>
                             <p className="text-xs text-gray-700 text-base text-start px-2">CCA2: {item.cca2}</p>
                             <p className="text-xs text-gray-700 text-base text-start px-2">CCA3: {item.cca3}</p>
                             <p className="text-xs text-gray-700 text-base text-start px-2">Native Name:{item?.name?.nativeName?.prs?.official}</p>
+                            {/* <p className="text-xs text-gray-700 text-base text-start px-2">Native Name:{console.log(item?.name?.nativeName?.prs?.official,'nt')}</p> */}
                             <p className="text-xs text-gray-700 text-base text-start px-2">Alternative: {item.altSpellings['1']}</p>
                             <p className="text-xs text-gray-700 text-base text-start px-2">Code: {item.idd['suffixes']}</p>
                         </div>
